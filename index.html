@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Game Project</title>
+</head>
+<body>
+  <h1>Web Game Project</h1>
+
+  <!-- Signup Form -->
+  <h2>Signup</h2>
+  <form id="signupForm">
+    <label for="signupUsername">Username:</label><br>
+    <input type="text" id="signupUsername" name="username" required><br>
+    <label for="signupPassword">Password:</label><br>
+    <input type="password" id="signupPassword" name="password" required><br><br>
+    <button type="submit">Signup</button>
+  </form>
+
+  <!-- Login Form -->
+  <h2>Login</h2>
+  <form id="loginForm">
+    <label for="loginUsername">Username:</label><br>
+    <input type="text" id="loginUsername" name="username" required><br>
+    <label for="loginPassword">Password:</label><br>
+    <input type="password" id="loginPassword" name="password" required><br><br>
+    <button type="submit">Login</button>
+  </form>
+
+  <script>
+    // Handle Signup Form Submission
+    document.getElementById('signupForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(Object.fromEntries(formData))
+      });
+      const data = await response.json();
+      console.log(data);
+    });
+
+    // Handle Login Form Submission
+    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(Object.fromEntries(formData))
+      });
+      const data = await response.json();
+      console.log(data);
+    });
+  </script>
+</body>
+</html>
