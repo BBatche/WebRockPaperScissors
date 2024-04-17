@@ -45,19 +45,27 @@
     });
 
     // Handle Login Form Submission
-    document.getElementById('loginForm').addEventListener('submit', async function(event) {
-      event.preventDefault();
-      const formData = new FormData(this);
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(Object.fromEntries(formData))
-      });
-      const data = await response.json();
-      console.log(data);
+   document.getElementById('loginForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(Object.fromEntries(formData))
     });
+    const data = await response.json();
+    console.log(data);
+
+    // Check if login was successful
+    if (response.ok) {
+      // Save token in localStorage
+      localStorage.setItem('token', data.token);
+      // Redirect to game page
+      window.location.href = '/game.html';
+    }
+  });
   </script>
 </body>
 </html>

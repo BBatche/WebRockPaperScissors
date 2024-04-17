@@ -1,0 +1,193 @@
+/* game.css */
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header styles */
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+}
+
+/* Game container styles */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styles */
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Result styles */
+.result {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Logout button styles */
+#logoutButton {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#logoutButton:hover {
+  background-color: #c82333;
+}
+@keyframes animate-stickman {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes animate-enemy {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-20px); }
+  100% { transform: translateX(0); }
+}
+
+.animate-stickman {
+  animation: animate-stickman 1s ease-in-out;
+}
+
+.animate-enemy {
+  animation: animate-enemy 1s ease-in-out;
+}
+
+#player-options {
+  position: absolute;
+  top: 560px;
+  left: 20px;
+}
+
+#player-options button {
+  display: block;
+  margin-bottom: 30px;
+  width: 240px;
+  height: 80px;
+  font-size: 36px;
+}
+h2{
+	position: absolute;
+	top: 490px;
+	left: 20px;
+	font-size: 36px;
+	color: white;
+}
+body {
+  background-color: #111; /* Dark background color */
+  overflow: hidden; /* Hide overflow to prevent horizontal scrolling */
+}
+#logoutButton{
+	position: absolute;
+  top: 1080px;
+  left: 20px;
+}
+#reset{
+	position: absolute;
+  top: 1095px;
+  left: 120px;
+}
+.rain {
+  position: absolute;
+  width: 4px; /* Width of raindrops */
+  height: 50px; /* Height of raindrops */
+  background-color: transparent; /* Color of raindrops */
+  animation: rainAnimation linear infinite; /* Apply animation to raindrops */
+}
+
+/* Define keyframes for rain animation */
+@keyframes rainAnimation {
+  0% {
+    transform: translateY(-100px) rotate(30deg); /* Initial position of raindrop */
+    opacity: 0; /* Initially invisible */
+  }
+  100% {
+    transform: translateY(100vh) rotate(30deg); /* Final position of raindrop */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+/* Add multiple raindrops */
+.rain:nth-child(1) {
+  left: 10%; /* Position of raindrop */
+  animation-duration: 2s; /* Duration of animation */
+}
+.rain:nth-child(2) {
+  left: 20%; /* Position of raindrop */
+  animation-duration: 1.5s; /* Duration of animation */
+}
+.rain:nth-child(3) {
+  left: 30%; /* Position of raindrop */
+  animation-duration: 2.3s; /* Duration of animation */
+}
+.rain:nth-child(4) {
+  left: 40%; /* Position of raindrop */
+  animation-duration: 2s; /* Duration of animation */
+}
+.rain:nth-child(5) {
+  left: 50%; /* Position of raindrop */
+  animation-duration: 1.5s; /* Duration of animation */
+}
+.rain:nth-child(6) {
+  left: 60%; /* Position of raindrop */
+  animation-duration: 2.3s; /* Duration of animation */
+}
+.rain:nth-child(7) {
+  left: 70%; /* Position of raindrop */
+  animation-duration: 2s; /* Duration of animation */
+}
+.rain:nth-child(8) {
+  left: 80%; /* Position of raindrop */
+  animation-duration: 1.5s; /* Duration of animation */
+}
+.rain:nth-child(9) {
+  left: 90%; /* Position of raindrop */
+  animation-duration: 2.3s; /* Duration of animation */
+}
+.raindrop {
+  position: absolute;
+  width: 6px; /* Adjust the size of the raindrop */
+  height: 10px; /* Adjust the size of the raindrop */
+  background-color: #00f; /* Adjust the color of the raindrop */
+  animation: fall 1s linear infinite; /* Adjust the animation duration and timing */
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-50px); /* Adjust the starting position of the raindrop */
+  }
+  100% {
+    transform: translateY(450px); /* Adjust the ending position of the raindrop */
+  }
+}

@@ -34,11 +34,18 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.status(200).json({ token });
+    res.status(200).json({ token }); // Return token as JSON response
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
   }
+});
+
+router.get('/logout', (req, res) => {
+  // Clear token from session (if any)
+  // Optionally, you can also invalidate the token from the client-side
+  res.clearCookie('token'); // Clear token from cookies (if using cookies for session management)
+  res.status(200).json({ message: 'Logged out successfully' });
 });
 
 router.get('/protected', authenticateUser, async (req, res) => {
