@@ -174,7 +174,7 @@ body {
 svg{
   z-index: -1;
   position: fixed;
-  bottom: 200px;
+  bottom: 150px;
   justify-content: center;
   display: flex;
 }
