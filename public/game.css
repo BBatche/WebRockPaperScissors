@@ -3,9 +3,21 @@
 /* Body styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
   margin: 0;
   padding: 0;
+  background-color: #111;
+	
+}
+
+
+.lightning-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  animation: lighting 15s linear infinite;
 }
 
 /* Header styles */
@@ -13,6 +25,7 @@ h1 {
   text-align: center;
   margin-top: 20px;
   color: white;
+  
 }
 
 /* Game container styles */
@@ -23,6 +36,7 @@ h1 {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
 }
 
 /* Button styles */
@@ -110,7 +124,7 @@ h2 {
 
 body {
   overflow-y: auto;
-  background-color: #111;
+  
   /* Dark background color */
   overflow: hidden;
   /* Hide overflow to prevent horizontal scrolling */
@@ -239,6 +253,7 @@ svg {
   bottom: 150px;
   justify-content: center;
   display: flex;
+  
 }
 
 #game-scene {
@@ -259,5 +274,32 @@ footer {
   text-align: center;
   padding: 20px;
   color: white;
+  
 }
 
+@keyframes lighting {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  3% {
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  5% {
+    opacity: 0;
+  }
+  6%{
+    opacity: 0;
+  }
+  8% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
