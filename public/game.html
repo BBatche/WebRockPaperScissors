@@ -1,87 +1,124 @@
-<!-- public/game.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock-paper-scissors-lizard-Spock Game</title>
   <!-- Add any necessary CSS stylesheets here -->
-    <link rel="stylesheet" href="game.css">
+  <link rel="stylesheet" href="game.css">
 
+  <style>
+    /* Add any necessary CSS styles here */
+  </style>
 </head>
+
 <body>
-	<div class="rain">
-  <div class="raindrop"></div>
+  <div class="rain">
+    <div class="raindrop"></div>
 </div>
 <div class="rain">
-  <div class="raindrop"></div>
-</div>
-	<div class="rain">
-  <div class="raindrop"></div>
+    <div class="raindrop"></div>
 </div>
 <div class="rain">
-  <div class="raindrop"></div>
-</div>
-	<div class="rain">
-  <div class="raindrop"></div>
+    <div class="raindrop"></div>
 </div>
 <div class="rain">
-  <div class="raindrop"></div>
-</div>
-	<div class="rain">
-  <div class="raindrop"></div>
+    <div class="raindrop"></div>
 </div>
 <div class="rain">
-  <div class="raindrop"></div>
+    <div class="raindrop"></div>
 </div>
-  <h1>Rock-paper-scissors-lizard-Spock Game </h1>
+<div class="rain">
+    <div class="raindrop"></div>
+</div>
+<div class="rain">
+    <div class="raindrop"></div>
+</div>
+<div class="rain">
+    <div class="raindrop"></div>
+</div>
+<h1>Rock-paper-scissors-lizard-Spock Game </h1>
 
-  
-	<svg viewBox="0 0 800 400" id="game-scene">
- 
-  <!-- Stickman -->
-  <g id="stickman">
-    <!-- Head -->
-    <circle cx="200" cy="225" r="15" fill="#ccc" stroke="black" stroke-width="2" />
-    <!-- Body -->
-    <line x1="200" y1="295" x2="200" y2="240" stroke="black" stroke-width="2" />
-    <!-- Arms -->
-    <line x1="200" y1="250" x2="170" y2="290" stroke="black" stroke-width="2" />
-    <line x1="200" y1="250" x2="230" y2="290" stroke="black" stroke-width="2" />
-    <!-- Legs -->
-    <line x1="200" y1="295" x2="170" y2="350" stroke="black" stroke-width="2" />
-    <line x1="200" y1="295" x2="230" y2="350" stroke="black" stroke-width="2" />
+  <svg viewBox="0 0 800 400" id="game-scene">
+
+    <!-- Stickman -->
+    <g id="stickman">
+      <!-- Head -->
+      <circle cx="200" cy="225" r="15" fill="#ccc" stroke="black" stroke-width="2" />
+      <!-- Body -->
+      <line x1="200" y1="295" x2="200" y2="240" stroke="black" stroke-width="2" />
+      <!-- Arms -->
+      <line x1="200" y1="250" x2="170" y2="290" stroke="black" stroke-width="2" />
+      <line x1="200" y1="250" x2="230" y2="290" stroke="black" stroke-width="2" />
+      <!-- Legs -->
+      <line x1="200" y1="295" x2="170" y2="350" stroke="black" stroke-width="2" />
+      <line x1="200" y1="295" x2="230" y2="350" stroke="black" stroke-width="2" />
+    </g>
+    <!-- Enemy -->
+    <rect x="600" y="310" width="50" height="40" fill="red" id="enemy" />
+    <!-- Player Choice -->
+    <text x="100" y="150" font-size="20" fill="white" id="player-choice"></text>
+    <!-- Enemy Choice -->
+    <text x="500" y="150" font-size="20" fill="white" id="enemy-choice"></text>
+    <!-- Result -->
+    <text x="300" y="250" font-size="20" fill="white" id="game-result"></text>
+
+  <!-- Health bars -->
+<g id="health-bars" class="health-bars">
+  <g class="health-bar" id="user-health-bar">
+    <rect x="10" y="200" height="10" fill="green" class="health" id="user-health" style="width: 50px !important;"></rect>
+    <text x="10" y="195" font-size="12" fill="white" text-anchor="start">User Health</text>
   </g>
-  <!-- Enemy -->
-  <rect x="600" y="310" width="50" height="40" fill="red" id="enemy" />
-  <!-- Player Choice -->
-  <text x="100" y="150" font-size="20" fill="white" id="player-choice"></text>
-  <!-- Enemy Choice -->
-  <text x="500" y="150" font-size="20" fill="white" id="enemy-choice"></text>
-  <!-- Result -->
-  <text x="300" y="250" font-size="20" fill="white" id="game-result"></text>
-</svg>
+  <g class="health-bar" id="computer-health-bar">
+    <rect x="650" y="200" height="10" fill="green" class="health" id="computer-health" style="width: 50px !important;"></rect>
+    <text x="650" y="195" font-size="12" fill="white" text-anchor="start">Computer Health</text>
+  </g>
+</g>
 
+  </svg>
 
-
-<footer>
-  <h2>Your Move</h2>
-  <div>
-    <button id="logoutButton">Logout</button>
-    <button id="reset">Reset Game</button>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
-    <button id="lizard">Lizard</button>
-    <button id="spock">Spock</button>
-  </div>
-  
-</footer>
-
+  <footer>
+    <h2>Your Move</h2>
+    <div>
+      <button id="logoutButton">Logout</button>
+      <button id="reset">Reset Game</button>
+      <button id="rock">Rock</button>
+      <button id="paper">Paper</button>
+      <button id="scissors">Scissors</button>
+      <button id="lizard">Lizard</button>
+      <button id="spock">Spock</button>
+    </div>
+  </footer>
 
   <!-- Add any necessary JavaScript scripts here -->
   <script>
     const moves = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
+
+    // Add this variable to store health points
+    let userHealth = 100;
+    let computerHealth = 100;
+
+    // Function to update the health bars
+    function updateHealthBars() {
+  const userHealthWidth = userHealth > 0 ? userHealth + 'px' : '0px';
+  const computerHealthWidth = computerHealth > 0 ? computerHealth + 'px' : '0px';
+  document.getElementById('user-health').style.width = userHealthWidth;
+  document.getElementById('computer-health').style.width = computerHealthWidth;
+}
+
+    // Function to update health based on game result
+    function updateHealth(result) {
+      if (result.includes('You win')) {
+        computerHealth -= 10; // Decrease computer health when user wins
+      } else if (result.includes('Computer wins')) {
+        userHealth -= 10; // Decrease user health when computer wins
+      }
+      updateHealthBars();
+    }
+
+    // Call updateHealthBars initially
+    updateHealthBars();
 
     // Function to generate a random move for the computer
     function generateComputerMove() {
@@ -89,27 +126,77 @@
       return moves[randomIndex];
     }
 
-   function determineWinner(userMove, computerMove) {
-	  if (userMove === computerMove) {
-		return 'It\'s a tie! Both chose ' + userMove + '.';
-	  } else if (
-		(userMove === 'rock' && (computerMove === 'scissors' || computerMove === 'lizard')) ||
-		(userMove === 'paper' && (computerMove === 'rock' || computerMove === 'spock')) ||
-		(userMove === 'scissors' && (computerMove === 'paper' || computerMove === 'lizard')) ||
-		(userMove === 'lizard' && (computerMove === 'paper' || computerMove === 'spock')) ||
-		(userMove === 'spock' && (computerMove === 'rock' || computerMove === 'scissors'))
-	  ) {
-		return 'You win! ' + userMove + ' beats ' + computerMove + '.';
-	  } else {
-		return 'Computer wins! ' + computerMove + ' beats ' + userMove + '.';
-	  }
-	}
-	function logout() {
-		  // Clear token from localStorage
-		  localStorage.removeItem('token');
-		  // Redirect to index page
-		  window.location.href = 'index.html';
-		}
+    function determineWinner(userMove, computerMove) {
+      if (userMove === computerMove) {
+        return "It's a tie! Both chose " + userMove + ".";
+      } else if (
+        (userMove === 'scissors' && (computerMove === 'paper' || computerMove === 'lizard')) ||
+        (userMove === 'paper' && (computerMove === 'rock' || computerMove === 'spock')) ||
+        (userMove === 'rock' && (computerMove === 'lizard' || computerMove === 'scissors')) ||
+        (userMove === 'lizard' && (computerMove === 'spock' || computerMove === 'paper')) ||
+        (userMove === 'spock' && (computerMove === 'scissors' || computerMove === 'rock'))
+      ) {
+        const result = 'You win! ' + getOutcome(userMove, computerMove);
+        updateHealth(result);
+        return result;
+      } else {
+        const result = 'Computer wins! ' + getOutcome(computerMove, userMove);
+        updateHealth(result);
+        return result;
+      }
+    }
+
+    function getOutcome(winningMove, losingMove) {
+      switch (winningMove) {
+        case 'scissors':
+          switch (losingMove) {
+            case 'paper':
+              return 'Scissors cut paper.';
+            case 'lizard':
+              return 'Scissors decapitate lizard.';
+          }
+          break;
+        case 'paper':
+          switch (losingMove) {
+            case 'rock':
+              return 'Paper covers rock.';
+            case 'spock':
+              return 'Paper disproves Spock.';
+          }
+          break;
+        case 'rock':
+          switch (losingMove) {
+            case 'lizard':
+              return 'Rock crushes lizard.';
+            case 'scissors':
+              return 'Rock crushes scissors.';
+          }
+          break;
+        case 'lizard':
+          switch (losingMove) {
+            case 'spock':
+              return 'Lizard poisons Spock.';
+            case 'paper':
+              return 'Lizard eats paper.';
+          }
+          break;
+        case 'spock':
+          switch (losingMove) {
+            case 'scissors':
+              return 'Spock smashes scissors.';
+            case 'rock':
+              return 'Spock vaporizes rock.';
+          }
+          break;
+      }
+    }
+
+    function logout() {
+      // Clear token from localStorage
+      localStorage.removeItem('token');
+      // Redirect to index page
+      window.location.href = 'index.html';
+    }
 
     // Add event listener to logout button
     document.getElementById('logoutButton').addEventListener('click', logout);
@@ -123,45 +210,46 @@
       document.getElementById('game-result').textContent = 'Make your move to start the game';
       document.getElementById('computer-move').textContent = 'Waiting for your move...';
     }
-	
-	function animateStickman() {
-  const stickman = document.getElementById('stickman');
-  stickman.classList.add('animate-stickman');
-  setTimeout(() => {
-    stickman.classList.remove('animate-stickman');
-  }, 1000); // Adjust the duration as needed
-}
 
-// Define animation function for enemy
-function animateEnemy() {
-  const enemy = document.getElementById('enemy');
-  enemy.classList.add('animate-enemy');
-  setTimeout(() => {
-    enemy.classList.remove('animate-enemy');
-  }, 1000); // Adjust the duration as needed
-}
+    function animateStickman() {
+      const stickman = document.getElementById('stickman');
+      stickman.classList.add('animate-stickman');
+      setTimeout(() => {
+        stickman.classList.remove('animate-stickman');
+      }, 1000); // Adjust the duration as needed
+    }
 
-// Event listeners for user move buttons
-moves.forEach(move => {
-  document.getElementById(move).addEventListener('click', function() {
-    const userMove = move;
-    const computerMove = generateComputerMove();
+    // Define animation function for enemy
+    function animateEnemy() {
+      const enemy = document.getElementById('enemy');
+      enemy.classList.add('animate-enemy');
+      setTimeout(() => {
+        enemy.classList.remove('animate-enemy');
+      }, 1000); // Adjust the duration as needed
+    }
 
-    const result = determineWinner(userMove, computerMove);
-    updateGameResult(result);
+    // Event listeners for user move buttons
+    moves.forEach(move => {
+      document.getElementById(move).addEventListener('click', function () {
+        const userMove = move;
+        const computerMove = generateComputerMove();
 
-    // Display player and enemy choices
-    document.getElementById('player-choice').textContent = `Your choice: ${userMove}`;
-    document.getElementById('enemy-choice').textContent = `Enemy's choice: ${computerMove}`;
+        const result = determineWinner(userMove, computerMove);
+        updateGameResult(result);
 
-    // Animate stickman and enemy
-    animateStickman();
-    animateEnemy();
-  });
-});
+        // Display player and enemy choices
+        document.getElementById('player-choice').textContent = `Your choice: ${userMove}`;
+        document.getElementById('enemy-choice').textContent = `Enemy's choice: ${computerMove}`;
+
+        // Animate stickman and enemy
+        animateStickman();
+        animateEnemy();
+      });
+    });
 
     // Event listener for reset button
     document.getElementById('reset').addEventListener('click', resetGame);
   </script>
 </body>
+
 </html>
